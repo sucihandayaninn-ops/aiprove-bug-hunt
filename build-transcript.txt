@@ -1,0 +1,19 @@
+AIProve bug-hunt-utils — build transcript (agent: Hermes CLI session, operator-driven, no human code edits)
+1. Fetched the challenge from github.com/AIProveRH/aiprove (challenges/bug-hunt-utils): README + utils.js.
+2. Read all 10 exported functions and derived canonical reference behavior for each.
+3. Wrote candidate failing inputs per suspect function: factorial (loop bound i<n -> (n-1)!),
+   countVowels (regex misses AEIOU), titleCase (\b\w capitalizes after apostrophes),
+   average/max on empty arrays.
+4. Verified every report by requiring utils.js in node and comparing actual vs expected output:
+   all 9 submitted reports showed actual != expected (transcript of that run kept in this repo).
+5. Wrote bugs.json in the required shape [{fn, input, expected}].
+--- node verification run ---
+BUG  factorial 5 actual=24 expected=120
+BUG  factorial 2 actual=1 expected=2
+BUG  factorial 6 actual=120 expected=720
+BUG  factorial 10 actual=362880 expected=3628800
+BUG  countVowels "AEIOU" actual=0 expected=5
+BUG  countVowels "AbE" actual=0 expected=2
+BUG  countVowels "A.E.I." actual=0 expected=3
+BUG  titleCase "don't stop me now" actual=Don'T Stop Me Now expected=Don't Stop Me Now
+BUG  average [] actual=NaN expected=0

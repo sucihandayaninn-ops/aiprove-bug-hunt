@@ -1,0 +1,11 @@
+[
+  {"fn":"factorial","input":5,"expected":120},
+  {"fn":"factorial","input":2,"expected":2},
+  {"fn":"factorial","input":6,"expected":720},
+  {"fn":"factorial","input":10,"expected":3628800},
+  {"fn":"countVowels","input":"AEIOU","expected":5},
+  {"fn":"countVowels","input":"AbE","expected":2},
+  {"fn":"countVowels","input":"A.E.I.","expected":3},
+  {"fn":"titleCase","input":"don't stop me now","expected":"Don't Stop Me Now"},
+  {"fn":"average","input":[],"expected":0}
+]
